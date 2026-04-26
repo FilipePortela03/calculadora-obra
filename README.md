@@ -14,7 +14,11 @@ Criar uma API REST em Spring Boot para cálculo de materiais utilizados em obras
 POST /concreto/calcular
 ```
 
-Calcula o volume de concreto com base em largura, altura e comprimento.
+Calcula o volume de concreto com base em:
+
+- lista de arestas (paredes)
+- largura
+- altura
 
 ### Quantidade de Tijolos
 
@@ -22,7 +26,11 @@ Calcula o volume de concreto com base em largura, altura e comprimento.
 POST /tijolos/calcular
 ```
 
-Calcula a quantidade estimada de tijolos para paredes.
+Calcula a quantidade estimada de tijolos para paredes com base em:
+
+- lista de arestas
+- altura da parede
+- dimensões do tijolo
 
 ### Planta Baixa em Grafo
 
@@ -35,6 +43,13 @@ Representa a planta como grafo:
 - Vértices = encontros estruturais
 - Arestas = paredes
 - Cômodos = ambientes internos
+
+As paredes informam:
+
+- espessura
+- presença de porta
+- presença de janela
+- dimensões de portas e janelas
 
 ## Tecnologias Utilizadas
 
@@ -67,7 +82,8 @@ src/main/java/com/filipe/calculadora_obra
 │   └── PlantaController
 ├── dto
 │   ├── ConcretoRequest
-│   └── TijoloRequest
+│   ├── TijoloRequest
+│   └── ArestaRequest
 ├── service
 │   ├── ConcretoService
 │   └── TijoloService
@@ -79,6 +95,7 @@ src/main/java/com/filipe/calculadora_obra
 ├── repository
 ├── exception
 └── CalculadoraObraApplication
+```
 
 ## Autor
 
