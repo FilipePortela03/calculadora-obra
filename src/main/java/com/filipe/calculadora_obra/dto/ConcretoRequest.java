@@ -1,10 +1,20 @@
 package com.filipe.calculadora_obra.dto;
 
+import java.util.List;
+
 public class ConcretoRequest {
 
+    private List<ArestaRequest> arestas;
     private double largura;
     private double altura;
-    private double comprimento;
+
+    public List<ArestaRequest> getArestas() {
+        return arestas;
+    }
+
+    public void setArestas(List<ArestaRequest> arestas) {
+        this.arestas = arestas;
+    }
 
     public double getLargura() {
         return largura;
@@ -20,13 +30,5 @@ public class ConcretoRequest {
 
     public void setAltura(double altura) {
         this.altura = altura;
-    }
-
-    public double getComprimento() {
-        return comprimento;
-    }
-
-    public void setComprimento(double comprimento) {
-        this.comprimento = comprimento;
     }
 }

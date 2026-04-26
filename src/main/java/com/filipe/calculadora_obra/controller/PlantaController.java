@@ -17,10 +17,29 @@ public class PlantaController {
         Vertice v3 = new Vertice(3L, 5, 4);
         Vertice v4 = new Vertice(4L, 0, 4);
 
-        Aresta a1 = new Aresta(1L, v1, v2, 0.15, true, false);
-        Aresta a2 = new Aresta(2L, v2, v3, 0.15, false, true);
-        Aresta a3 = new Aresta(3L, v3, v4, 0.15, false, false);
-        Aresta a4 = new Aresta(4L, v4, v1, 0.15, false, false);
+        Aresta a1 = new Aresta(
+                1L, v1, v2, 0.15,
+                true, 2.10, 0.80,
+                false, 0, 0
+        );
+
+        Aresta a2 = new Aresta(
+                2L, v2, v3, 0.15,
+                false, 0, 0,
+                true, 1.20, 1.00
+        );
+
+        Aresta a3 = new Aresta(
+                3L, v3, v4, 0.15,
+                false, 0, 0,
+                false, 0, 0
+        );
+
+        Aresta a4 = new Aresta(
+                4L, v4, v1, 0.15,
+                false, 0, 0,
+                false, 0, 0
+        );
 
         Comodo sala = new Comodo("Sala", 5, 4, 2.8);
 
