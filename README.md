@@ -62,14 +62,11 @@ As paredes informam:
 
 ## Como Executar
 
-```bash
-mvn spring-boot:run
-```
+1. Abrir o projeto no IntelliJ IDEA
+2. Executar a classe `CalculadoraObraApplication`
+3. Acessar o Swagger: http://localhost:8080/swagger-ui/index.html
 
-Acesse o Swagger:
 
-```text
-http://localhost:8080/swagger-ui/index.html
 ```
 
 ## Estrutura do Projeto
