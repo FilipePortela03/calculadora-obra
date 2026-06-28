@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="jakarta.faces.html"
+      xmlns:f="jakarta.faces.core">
+<h:head>
+    <title>Novo Orçamento</title>
+</h:head>
+<h:body>
+    <h1>Dados da Planta Residencial</h1>
+
+    <h:messages style="color: red; font-weight: bold; margin-bottom: 15px;" />
+
+    <h:form id="formOrcamento">
+        <fieldset>
+            <legend>Identificação</legend>
+            <h:panelGrid columns="2">
+                <h:outputLabel value="Nome do Cliente:" />
+                <h:inputText value="#{orcamentoBean.novoOrcamento.nomeUsuario}" required="true" requiredMessage="O Nome do Cliente é obrigatório!" />
+            </h:panelGrid>
+        </fieldset>
+
+        <br/>
+
+        <fieldset>
+            <legend>Paredes da Planta (Arestas)</legend>
+
+            <h:dataTable value="#{orcamentoBean.arestas}" var="aresta">
+                <h:column>
+                    <f:facet name="header">Comprimento da Parede (m)</f:facet>
+                    <h:inputText value="#{aresta.comprimento}" required="true" requiredMessage="O comprimento da parede é obrigatório!" />
+                </h:column>
+
+                <h:column>
+                    <h:commandButton value="Remover" action="#{orcamentoBean.removerParede(aresta)}" immediate="true">
+                        <f:ajax execute="@form" render="@form" />
+                    </h:commandButton>
+                </h:column>
+            </h:dataTable>
+
+            <br/>
+
+            <h:commandButton value="Adicionar Mais Uma Parede" action="#{orcamentoBean.adicionarParede}">
+                <f:ajax execute="@form" render="@form" />
+            </h:commandButton>
+        </fieldset>
+
+        <br/>
+
+        <fieldset>
+            <legend>Parâmetros da Alvenaria (Tijolo)</legend>
+            <h:panelGrid columns="2">
+                <h:outputLabel value="Altura da Parede (m):" />
+                <h:inputText value="#{orcamentoBean.alturaParede}" required="true" requiredMessage="A altura da parede é obrigatória!" />
+
+                <h:outputLabel value="Altura do Tijolo (m):" />
+                <h:inputText value="#{orcamentoBean.alturaTijolo}" required="true" requiredMessage="A altura do tijolo é obrigatória!" />
+
+                <h:outputLabel value="Comprimento do Tijolo (m):" />
+                <h:inputText value="#{orcamentoBean.comprimentoTijolo}" required="true" requiredMessage="O comprimento do tijolo é obrigatório!" />
+            </h:panelGrid>
+        </fieldset>
+
+        <br/>
+
+        <fieldset>
+            <legend>Parâmetros da Fundação/Viga (Concreto)</legend>
+            <h:panelGrid columns="2">
+                <h:outputLabel value="Largura do Concreto (m):" />
+                <h:inputText value="#{orcamentoBean.larguraConcreto}" required="true" requiredMessage="A largura do concreto é obrigatória!" />
+
+                <h:outputLabel value="Altura do Concreto (m):" />
+                <h:inputText value="#{orcamentoBean.alturaConcreto}" required="true" requiredMessage="A altura do concreto é obrigatória!" />
+            </h:panelGrid>
+        </fieldset>
+
+        <br/>
+        <h:commandButton value="Calcular e Salvar Orçamento" action="#{orcamentoBean.salvar}" />
+        <h:commandButton value="Voltar" action="index.xhtml?faces-redirect=true" immediate="true" />
+    </h:form>
+</h:body>
+</html>

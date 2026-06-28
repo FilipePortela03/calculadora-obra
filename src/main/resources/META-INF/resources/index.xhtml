@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="jakarta.faces.html"
+      xmlns:f="jakarta.faces.core">
+<h:head>
+    <title>Calculadora de Obra</title>
+</h:head>
+<h:body>
+    <h1>Gestão de Orçamentos Residenciais</h1>
+
+    <h:form>
+        <h:outputLabel value="Buscar (Número ou Nome): " />
+        <h:inputText value="#{orcamentoBean.termoBusca}" />
+        <h:commandButton value="Buscar" action="#{orcamentoBean.buscar}" />
+
+        <br/><br/>
+
+        <h:commandButton value="Solicitar Novo Orçamento" action="solicitar-orcamento.xhtml?faces-redirect=true" />
+    </h:form>
+
+    <hr/>
+
+    <h:dataTable value="#{orcamentoBean.listaOrcamentos}" var="orc" border="1">
+        <h:column>
+            <f:facet name="header">Número</f:facet>
+            <h:outputText value="#{orc.numero}" />
+        </h:column>
+        <h:column>
+            <f:facet name="header">Cliente</f:facet>
+            <h:outputText value="#{orc.nomeUsuario}" />
+        </h:column>
+        <h:column>
+            <f:facet name="header">Qtd. Tijolos</f:facet>
+            <h:outputText value="#{orc.quantidadeTijolos}">
+                <f:convertNumber pattern="#0" />
+            </h:outputText>
+        </h:column>
+        <h:column>
+            <f:facet name="header">Vol. Concreto (m³)</f:facet>
+            <h:outputText value="#{orc.volumeConcreto}">
+                <f:convertNumber pattern="#0.00" />
+            </h:outputText>
+        </h:column>
+    </h:dataTable>
+</h:body>
+</html>
